@@ -525,3 +525,20 @@ Antes de empezar a programar:
 * [ ] Completar README
 * [ ] Revisar errores
 * [ ] Revisar Git
+
+
+# Flujo
+
+src contiene el código TypeScript que escribo; dist contiene el JavaScript generado al compilar. app.ts configura Express y server.ts inicia el servidor.
+
+Configurar app.ts y server.ts para correr por el puerto
+
+# SCRIPTS CONFIG
+
+"scripts": {
+
+    "dev": "tsx src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
