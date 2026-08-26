@@ -17,5 +17,15 @@
   "bugs": {
     "url": "https://github.com/valejo0310-svg/Courtly-API/issues"
   },
-  "homepage": "https://github.com/valejo0310-svg/Courtly-API#readme"
+  "homepage": "https://github.com/valejo0310-svg/Courtly-API#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.3.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
 }
