@@ -11,7 +11,7 @@ export async function createCourtController (req: Request, res: Response){
     res.status(201).json(court)
 }
 
-export async function getAllCourtsController (req: Request, res: Response){
+export async function getAllCourtsController (_req: Request, res: Response){
     const response = await getAllCourts ()
 
     res.status(200).json(response)
