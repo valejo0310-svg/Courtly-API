@@ -1,7 +1,7 @@
 import { Court } from "../models/court.model";
 import { CreateCourtDTO } from "../dto/create-court.dto";
 import { UpdateCourtDTO } from "../dto/update-court.dto";
-import {create, findAll, findById, update, remove} from "../repositories/court.repository"
+import {create, findAll, findById, updateCourt, remove} from "../repositories/court.repository"
 
 
 export async function createCourt (data : CreateCourtDTO) : Promise <Court>{
@@ -33,7 +33,7 @@ export async function getCourtById (id:number): Promise<Court> {
         return idResponse
 }
 
-export async function updateCourt (id: number, data: UpdateCourtDTO): Promise <Court> {
+export async function updatedCourt (id: number, data: UpdateCourtDTO): Promise <Court> {
     if (data.name !== undefined && data.name.trim() === ''){
         throw new Error ('You need to fill this field')
     }
@@ -41,13 +41,16 @@ export async function updateCourt (id: number, data: UpdateCourtDTO): Promise <C
         throw new Error ('The price needs to be higher than 0')
     }
 
-    const updatedCourt = await update(id, data)
-    if (!updatedCourt){
-        throw new Error ('this court does not exists')
+    const updatedCourt = await updateCourt(id, data)
+
+    if (!updatedCourt) {
+        throw new Error('this court does not exists');
     }
 
-    return updatedCourt
+    
+    return updatedCourt;
 }
+
 
 export async function removeCourt (id: number):Promise <void>{
     const deleted = await remove (id);

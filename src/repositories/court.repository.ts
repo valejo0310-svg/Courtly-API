@@ -21,10 +21,25 @@ export async function findById (id: number):Promise<Court | null>{
     return await Court.findByPk(id)
 }
 
-export async function deleteCourt (id:number):Promise <number>{
-   return await Court.destroy({where : {id}})
+export async function updateCourt (id:number, data :UpdateCourtDTO) : Promise <Court | null>{
+
+    const searchCourt = await findById(id);
+    if (!searchCourt){
+        return null
+    }
+    await searchCourt.update(data)
+    await searchCourt.save()
+    return searchCourt
 }
 
-export async function restoreCourt (id:number):Promise <void>{
-   return await Court.restore({where : {id}})
-}
+
+export async function remove (id:number) : Promise <boolean>{
+    const removeCourt = await findById(id)
+
+    if (!removeCourt){
+        return false
+    }
+    
+    await removeCourt.destroy()
+    return true;
+};

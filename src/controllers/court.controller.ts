@@ -1,6 +1,6 @@
 import { CreateCourtDTO } from "../dto/create-court.dto";
 import { Request ,Response } from "express";
-import { createCourt, getAllCourts, getCourtById, updateCourt, removeCourt} from "../services/court.service";
+import { createCourt, getAllCourts, getCourtById, updatedCourt, removeCourt} from "../services/court.service";
 import { UpdateCourtDTO } from "../dto/update-court.dto";
 
 export async function createCourtController (req: Request, res: Response){
@@ -26,15 +26,16 @@ export async function getCourtByIdController (req: Request, res: Response){
 }
 
 export async function updateCourtController (req: Request, res: Response) {
-    const id = Number (req.params.id)
+    const id = Number( req.params.id)
+    const data: UpdateCourtDTO = req.body
 
-    const data : UpdateCourtDTO = req.body
+    const court = await updatedCourt(id,data)
 
-    const updatedCourt = await updateCourt (id , data)
-
-    res.status(200).json(updatedCourt)
+    res.status (200).json(court)
 
 }
+
+
 
 export async function deleteCourtController (req: Request, res: Response){
     const id = Number (req.params.id)
