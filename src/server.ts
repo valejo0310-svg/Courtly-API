@@ -1,8 +1,7 @@
 import { app } from './app';
 import dotenv from 'dotenv';
 import { testDatabaseConnection } from './config/database';
-import './models/court.model';
-import './models/user.model';
+import './models/associations.model'
 import { sequelize } from './config/database';
 dotenv.config();
 
