@@ -1,7 +1,10 @@
 import { Router } from "express";
 import { userRegistrationController, loginUserController } from "../controllers/auth.controller";
+import {validateRegister, validateLogin} from "../middlewares/validation.middleware";
 
 export const userRouter = Router();
 
-userRouter.post('/register',userRegistrationController)
-userRouter.post ('/login', loginUserController)
+userRouter.post('/register',validateRegister,userRegistrationController)
+userRouter.post ('/login',validateLogin, loginUserController)
+
+
